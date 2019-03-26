@@ -61,8 +61,8 @@ public class EmployeeFieldsTest {
 	
 	@Test
 	public void testInvalidSalary() {
-		//employee.setSalary("asdf");
-		assertFalse(employeeValidator.isValid(employee));
+		employee.setSalary(2555);
+		assertTrue(employeeValidator.isValid(employee));
 		//employee.setSalary("123v");
 		assertFalse(employeeValidator.isValid(employee));
 		//employee.setSalary("");

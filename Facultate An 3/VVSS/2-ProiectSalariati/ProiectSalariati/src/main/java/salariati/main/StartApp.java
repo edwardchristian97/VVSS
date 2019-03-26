@@ -29,6 +29,8 @@ public class StartApp {
         for (Employee _employee : employeeController.getEmployeesList())
             System.out.println(_employee.toString());
 
+        System.out.println();
+
         EmployeeValidator validator = new EmployeeValidator();
         System.out.println(validator.isValid(new Employee("LastName", "FirstName", "1234567894322", DidacticFunction.TEACHER, 3400)));
 

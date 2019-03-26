@@ -16,7 +16,7 @@ public class EmployeeValidator {
                 employee.getDidacticFunction().equals(DidacticFunction.LECTURER) ||
                 employee.getDidacticFunction().equals(DidacticFunction.TEACHER) ||
                 employee.getDidacticFunction().equals(DidacticFunction.CONFERENTIAR);
-        boolean isSalaryValid = (employee.getSalary() > 0);
+        boolean isSalaryValid = (employee.getSalary() >= 2080);
 
         return isLastNameValid && isFirstNameValid && isCNPValid && isFunctionValid && isSalaryValid;
     }
