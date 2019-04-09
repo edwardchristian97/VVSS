@@ -19,12 +19,12 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
         employeeValidator = new EmployeeValidator();
         employeeList = new ArrayList<Employee>();
 
-        Employee Ionel = new Employee("Pacuraru", "FirstName", "1234567890876", DidacticFunction.ASISTENT, 2500);
-        Employee Mihai = new Employee("Dumitrescu", "FirstName", "1234567890876", DidacticFunction.LECTURER, 2500);
-        Employee Ionela = new Employee("Ionescu", "FirstName", "1234567890876", DidacticFunction.LECTURER, 2500);
-        Employee Mihaela = new Employee("Pacuraru", "FirstName", "1234567890876", DidacticFunction.ASISTENT, 2500);
-        Employee Vasile = new Employee("Georgescu", "FirstName", "1234567890876", DidacticFunction.TEACHER, 2500);
-        Employee Marin = new Employee("Puscas", "FirstName", "1234567890876", DidacticFunction.TEACHER, 2500);
+        Employee Ionel = new Employee("Pacuraru", "FirstName", "1234567890123", DidacticFunction.ASISTENT, 2500);
+        Employee Mihai = new Employee("Dumitrescu", "FirstName", "1234567890124", DidacticFunction.LECTURER, 2500);
+        Employee Ionela = new Employee("Ionescu", "FirstName", "1234567890125", DidacticFunction.CONFERENTIAR, 2500);
+        Employee Mihaela = new Employee("Pacuraru", "FirstName", "1234567890126", DidacticFunction.ASISTENT, 2500);
+        Employee Vasile = new Employee("Georgescu", "FirstName", "1234567890127", DidacticFunction.TEACHER, 2500);
+        Employee Marin = new Employee("Puscas", "FirstName", "1234567890128", DidacticFunction.TEACHER, 2500);
 
         employeeList.add(Ionel);
         employeeList.add(Mihai);
@@ -51,6 +51,29 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
     @Override
     public void modifyEmployee(Employee oldEmployee, Employee newEmployee) {
         // TODO Auto-generated method stub
+    }
+
+    @Override
+    public boolean updateDidacticFunction(String cnp, String didacticFunction) {
+        DidacticFunction function;
+
+        if (didacticFunction.equals("ASISTENT"))
+            function = DidacticFunction.ASISTENT;
+        else if (didacticFunction.equals("CONFERENTIAR"))
+            function = DidacticFunction.CONFERENTIAR;
+        else if (didacticFunction.equals("LECTURER"))
+            function = DidacticFunction.LECTURER;
+        else if (didacticFunction.equals("TEACHER"))
+            function = DidacticFunction.TEACHER;
+        else
+            return false;
+
+        for (Employee employee : employeeList)
+            if (employee.getCnp().equals(cnp)) {
+                employee.setDidacticFunction(function);
+                return true;
+            }
+        return false;
     }
 
     @Override

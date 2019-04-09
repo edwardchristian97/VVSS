@@ -55,7 +55,7 @@ public class AddEmployeeTest {
 
         //Nonvalid lastName, length = 0 (> 2)
         newEmployee = new Employee("", "FirstName", "1910509055057", DidacticFunction.ASISTENT, 3000);
-        assertTrue(employeeValidator.isValid(newEmployee));
+        assertFalse(employeeValidator.isValid(newEmployee));
     }
 
     @Test
@@ -77,11 +77,11 @@ public class AddEmployeeTest {
     public void testNonValidSalary() {
         //Nonvalid salary < 2080
         Employee newEmployee = new Employee("lastName", "FirstName", "1910509055057", DidacticFunction.ASISTENT, 2079);
-        assertTrue(employeeValidator.isValid(newEmployee));
+        assertFalse(employeeValidator.isValid(newEmployee));
 
         //Nonvalid salary > MAX
         newEmployee = new Employee("lastName", "FirstName", "1910509055057", DidacticFunction.ASISTENT, Integer.MAX_VALUE + 1);
-        assertTrue(employeeValidator.isValid(newEmployee));
+        assertFalse(employeeValidator.isValid(newEmployee));
 
 
     }

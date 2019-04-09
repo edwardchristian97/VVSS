@@ -7,6 +7,9 @@ import salariati.validator.EmployeeValidator;
 import salariati.controller.EmployeeController;
 import salariati.enumeration.DidacticFunction;
 
+import java.io.Reader;
+import java.util.Scanner;
+
 //functionalitati
 //F01.	 adaugarea unui nou angajat (nume, prenume, CNP, functia didactica, salariul de incadrare);
 //F02.	 modificarea functiei didactice (asistent/lector/conferentiar/profesor) a unui angajat;
@@ -29,10 +32,17 @@ public class StartApp {
         for (Employee _employee : employeeController.getEmployeesList())
             System.out.println(_employee.toString());
 
-        System.out.println();
+        System.out.println("-----------------------------------------");
+        System.out.println("CNP = ");
+        Scanner scanner = new Scanner(System.in);
+        String cnp = scanner.nextLine();
+        System.out.println("Didactic Function = ");
+        String didacticFunction = scanner.nextLine();
+        employeeController.modifyDidacticFunction(cnp, didacticFunction);
 
-        EmployeeValidator validator = new EmployeeValidator();
-        System.out.println(validator.isValid(new Employee("LastName", "FirstName", "1234567894322", DidacticFunction.TEACHER, 3400)));
+        for (Employee _employee : employeeController.getEmployeesList())
+            System.out.println(_employee.toString());
+
 
 
     }
