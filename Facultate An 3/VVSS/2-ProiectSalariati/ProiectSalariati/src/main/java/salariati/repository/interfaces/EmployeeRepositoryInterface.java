@@ -17,6 +17,6 @@ public interface EmployeeRepositoryInterface {
 
     List<Employee> getEmployeeList();
 
-    List<Employee> getEmployeeByCriteria(String criteria);
+    boolean getEmployeeByCriteria(String criteria);
 
 }

@@ -1,11 +1,14 @@
 package salariati.repository.mock;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import salariati.enumeration.DidacticFunction;
 
+import salariati.model.AgeComparator;
 import salariati.model.Employee;
+import salariati.model.SalaryComparator;
 import salariati.repository.interfaces.EmployeeRepositoryInterface;
 import salariati.validator.EmployeeValidator;
 
@@ -19,12 +22,12 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
         employeeValidator = new EmployeeValidator();
         employeeList = new ArrayList<Employee>();
 
-        Employee Ionel = new Employee("Pacuraru", "FirstName", "1234567890123", DidacticFunction.ASISTENT, 2500);
-        Employee Mihai = new Employee("Dumitrescu", "FirstName", "1234567890124", DidacticFunction.LECTURER, 2500);
-        Employee Ionela = new Employee("Ionescu", "FirstName", "1234567890125", DidacticFunction.CONFERENTIAR, 2500);
-        Employee Mihaela = new Employee("Pacuraru", "FirstName", "1234567890126", DidacticFunction.ASISTENT, 2500);
-        Employee Vasile = new Employee("Georgescu", "FirstName", "1234567890127", DidacticFunction.TEACHER, 2500);
-        Employee Marin = new Employee("Puscas", "FirstName", "1234567890128", DidacticFunction.TEACHER, 2500);
+        Employee Ionel = new Employee("Pacuraru", "FirstName", "1974567890123", DidacticFunction.ASISTENT, 2700);
+        Employee Mihai = new Employee("Dumitrescu", "FirstName", "1974567890124", DidacticFunction.LECTURER, 2200);
+        Employee Ionela = new Employee("Ionescu", "FirstName", "1684567890125", DidacticFunction.CONFERENTIAR, 3500);
+        Employee Mihaela = new Employee("Pacuraru", "FirstName", "1754567890126", DidacticFunction.ASISTENT, 5500);
+        Employee Vasile = new Employee("Georgescu", "FirstName", "1894567890127", DidacticFunction.TEACHER, 7500);
+        Employee Marin = new Employee("Puscas", "FirstName", "1904567890128", DidacticFunction.TEACHER, 3900);
 
         employeeList.add(Ionel);
         employeeList.add(Mihai);
@@ -82,9 +85,21 @@ public class EmployeeMock implements EmployeeRepositoryInterface {
     }
 
     @Override
-    public List<Employee> getEmployeeByCriteria(String criteria) {
-        // TODO Auto-generated method stub
-        return null;
+    public boolean getEmployeeByCriteria(String criteria) {
+
+        List<Employee> employees = getEmployeeList();
+        if (criteria.toLowerCase().equals("salariu")) {
+            Collections.sort(employees, Collections.reverseOrder(new SalaryComparator()));
+            employeeList = employees;
+            return true;
+        }
+
+        if (criteria.toLowerCase().equals("cnp")) {
+            Collections.sort(employees, new AgeComparator());
+            employeeList = employees;
+            return true;
+        }
+        return false;
     }
 
 }

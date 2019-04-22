@@ -14,8 +14,8 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
-    public void addEmployee(Employee employee) {
-        employeeRepository.addEmployee(employee);
+    public boolean addEmployee(Employee employee) {
+        return employeeRepository.addEmployee(employee);
     }
 
     public List<Employee> getEmployeesList() {
@@ -26,8 +26,12 @@ public class EmployeeController {
         employeeRepository.modifyEmployee(oldEmployee, newEmployee);
     }
 
-    public void modifyDidacticFunction(String cnp, String didacticFunction) {
-        employeeRepository.updateDidacticFunction(cnp, didacticFunction);
+    public boolean modifyDidacticFunction(String cnp, String didacticFunction) {
+        return employeeRepository.updateDidacticFunction(cnp, didacticFunction);
+    }
+
+    public boolean getEmployeesCriteria(String criteria) {
+        return employeeRepository.getEmployeeByCriteria(criteria);
     }
 
     public void deleteEmployee(Employee employee) {

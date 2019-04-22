@@ -87,10 +87,10 @@ public class EmployeeImpl implements EmployeeRepositoryInterface {
 
 
     @Override
-    public List<Employee> getEmployeeByCriteria(String criteria) {
+    public boolean getEmployeeByCriteria(String criteria) {
         List<Employee> employeeList = new ArrayList<Employee>();
 
-        return employeeList;
+        return true;
     }
 
 }

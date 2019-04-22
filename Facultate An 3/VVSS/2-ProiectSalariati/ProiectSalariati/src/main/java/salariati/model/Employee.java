@@ -105,7 +105,7 @@ public class Employee {
     /**
      * Getter for the employee salary
      */
-    public float getSalary() {
+    public int getSalary() {
         return salary;
     }
 

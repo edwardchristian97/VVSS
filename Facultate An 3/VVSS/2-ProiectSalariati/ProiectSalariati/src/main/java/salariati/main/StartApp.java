@@ -17,34 +17,53 @@ import java.util.Scanner;
 
 public class StartApp {
 
+    public boolean testareIntegrare(EmployeeRepositoryInterface employeesRepository, EmployeeController employeeController) {
+        employeesRepository = new EmployeeMock();
+        employeeController = new EmployeeController(employeesRepository);
+
+        Employee employee = new Employee("LastName", "FirstName", "1704567894321", DidacticFunction.CONFERENTIAR, 6600);
+        if (!employeeController.addEmployee(employee))
+            return false;
+
+        if (!employeeController.modifyDidacticFunction("1704567894321", "TEACHER"))
+            return false;
+
+        if (!employeeController.getEmployeesCriteria("salariu"))
+            return false;
+
+        for (Employee _employee : employeeController.getEmployeesList())
+            System.out.println(_employee.toString());
+
+        return true;
+    }
+
+    public boolean testareIntegrarePA(EmployeeRepositoryInterface employeesRepository, EmployeeController employeeController) {
+        employeesRepository = new EmployeeMock();
+        employeeController = new EmployeeController(employeesRepository);
+
+        Employee employee = new Employee("LastName", "FirstName", "1704567894321", DidacticFunction.CONFERENTIAR, 6600);
+        if (!employeeController.addEmployee(employee))
+            return false;
+
+        return true;
+    }
+
+    public boolean testareIntegrarePAB(EmployeeRepositoryInterface employeesRepository, EmployeeController employeeController) {
+        employeesRepository = new EmployeeMock();
+        employeeController = new EmployeeController(employeesRepository);
+
+        Employee employee = new Employee("LastName", "FirstName", "1704567894321", DidacticFunction.CONFERENTIAR, 6600);
+        if (!employeeController.addEmployee(employee))
+            return false;
+
+        if (!employeeController.modifyDidacticFunction("1704567894321", "TEACHER"))
+            return false;
+
+        return true;
+
+    }
+
     public static void main(String[] args) {
-
-        EmployeeRepositoryInterface employeesRepository = new EmployeeMock();
-        EmployeeController employeeController = new EmployeeController(employeesRepository);
-
-        for (Employee _employee : employeeController.getEmployeesList())
-            System.out.println(_employee.toString());
-        System.out.println("-----------------------------------------");
-
-        Employee employee = new Employee("LastName", "FirstName", "1234567894321", DidacticFunction.CONFERENTIAR, 2500);
-        employeeController.addEmployee(employee);
-
-        for (Employee _employee : employeeController.getEmployeesList())
-            System.out.println(_employee.toString());
-
-        System.out.println("-----------------------------------------");
-        System.out.println("CNP = ");
-        Scanner scanner = new Scanner(System.in);
-        String cnp = scanner.nextLine();
-        System.out.println("Didactic Function = ");
-        String didacticFunction = scanner.nextLine();
-        employeeController.modifyDidacticFunction(cnp, didacticFunction);
-
-        for (Employee _employee : employeeController.getEmployeesList())
-            System.out.println(_employee.toString());
-
-
-
     }
 
 }

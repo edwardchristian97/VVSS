@@ -32,7 +32,7 @@ public class UpdateDidacticFunctionTest {
     @Test
     public void testAsistentCNP() {
         //Valid CNP, Valid Asistent Function
-        assertTrue(employeeRepository.updateDidacticFunction("1234567890124", "ASISTENT"));
+        assertTrue(employeeRepository.updateDidacticFunction("1974567890124", "ASISTENT"));
     }
 
     @Test
@@ -44,31 +44,31 @@ public class UpdateDidacticFunctionTest {
     @Test
     public void testConferentiarCNP() {
         //Valid CNP, Valid Conferentiar Function
-        assertTrue(employeeRepository.updateDidacticFunction("1234567890123", "CONFERENTIAR"));
+        assertTrue(employeeRepository.updateDidacticFunction("1974567890123", "CONFERENTIAR"));
     }
 
     @Test
     public void testConferentiarNoCNP() {
         //Non Valid CNP, Valid Conferentiar Function
-        assertFalse(employeeRepository.updateDidacticFunction("1234567810123", "CONFERENTIAR"));
+        assertFalse(employeeRepository.updateDidacticFunction("1974567810123", "CONFERENTIAR"));
     }
 
     @Test
     public void testLecturerCNP() {
         //Valid CNP, Valid Lecturer Function
-        assertTrue(employeeRepository.updateDidacticFunction("1234567890127", "LECTURER"));
+        assertTrue(employeeRepository.updateDidacticFunction("1894567890127", "LECTURER"));
     }
 
     @Test
     public void testTeacherCNP() {
         //Valid CNP, Valid Teacher Function
-        assertTrue(employeeRepository.updateDidacticFunction("1234567890123", "TEACHER"));
+        assertTrue(employeeRepository.updateDidacticFunction("1974567890123", "TEACHER"));
     }
 
     @Test
     public void testNonValidFunction() {
         //Non valid Functions
-        assertFalse(employeeRepository.updateDidacticFunction("1234567890123", "TEST"));
+        assertFalse(employeeRepository.updateDidacticFunction("1974567890123", "TEST"));
     }
 
 }
