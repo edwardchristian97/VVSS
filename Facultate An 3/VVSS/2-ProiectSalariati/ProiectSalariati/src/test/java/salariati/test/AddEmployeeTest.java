@@ -82,8 +82,6 @@ public class AddEmployeeTest {
         //Nonvalid salary > MAX
         newEmployee = new Employee("lastName", "FirstName", "1910509055057", DidacticFunction.ASISTENT, Integer.MAX_VALUE + 1);
         assertFalse(employeeValidator.isValid(newEmployee));
-
-
     }
 
 }
